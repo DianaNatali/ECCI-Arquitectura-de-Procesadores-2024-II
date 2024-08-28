@@ -1,0 +1,9 @@
+# Ignorar carpeta build
+build/
+
+# Ignorar archivos de Vivado .str
+*.str
+
+# Ignorar archivos .jou y backup.jou
+*.jou
+backup.jou

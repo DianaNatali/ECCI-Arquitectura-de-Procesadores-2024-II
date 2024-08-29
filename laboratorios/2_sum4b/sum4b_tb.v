@@ -3,27 +3,27 @@
 
 module sum4b_tb();
 
-    reg [3:0] xi_tb;
-    reg [3:0] yi_tb;
+    reg [3:0] A_tb;
+    reg [3:0] B_tb;
   
-    wire co_tb;
-    wire [3:0] zi_tb;
+    wire Cout_tb;
+    wire [3:0] Sum_tb;
   
     // Instantiate the Unit Under Test (UUT)
     sum4b uut (
-      .xi(xi_tb), 
-      .yi(yi_tb), 
-      .co(co_tb), 
-      .zi(zi_tb)
+      .A(A_tb), 
+      .B( B_tb), 
+      .Cout(Cout_tb), 
+      .Sum(Sum_tb)
     );
   
   initial begin
-    xi_tb=0;
-    for (yi_tb = 0; yi_tb < 15; yi_tb = yi_tb + 1) begin
-      if (yi_tb==0) begin
-        xi_tb=xi_tb+1;
+    A_tb=0;
+    for ( B_tb = 0;  B_tb < 15;  B_tb =  B_tb + 1) begin
+      if ( B_tb==0) begin
+        A_tb=A_tb+1;
       end
-      #5 $display("el valor de %d + %d = %d", xi_tb,yi_tb,zi_tb);
+      #5 $display("el valor de %d + %d = %d", A_tb, B_tb,Sum_tb);
     end
     $finish;
   end      

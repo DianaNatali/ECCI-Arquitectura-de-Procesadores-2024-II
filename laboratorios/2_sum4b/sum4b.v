@@ -11,9 +11,9 @@ module sum4b (
   wire c_out; 
 
 
-  sum1b s0 (.A(xi[0]), .B(yi[0]), .Ci(1'b0),  .Cout(c1) ,.Sum(Sum[0]));
-  sum1b s1 (.A(xi[1]), .B(yi[1]), .Ci(c1), .Cout(c2) ,.Sum(Sum[1]));
-  sum1b s2 (.A(xi[2]), .B(yi[2]), .Ci(c2), .Cout(c3) ,.Sum(Sum[2]));
-  sum1b s3 (.A(xi[3]), .B(yi[3]), .Ci(c3), .Cout(co) ,.Sum(Sum[3]));
+  sum1b s0 (.A(A[0]), .B(B[0]), .Ci(1'b0),  .Cout(c1) ,.Sum(Sum[0]));
+  sum1b s1 (.A(A[1]), .B(B[1]), .Ci(c1), .Cout(c2) ,.Sum(Sum[1]));
+  sum1b s2 (.A(A[2]), .B(B[2]), .Ci(c2), .Cout(c3) ,.Sum(Sum[2]));
+  sum1b s3 (.A(A[3]), .B(B[3]), .Ci(c3), .Cout(Cout) ,.Sum(Sum[3]));
 
 endmodule

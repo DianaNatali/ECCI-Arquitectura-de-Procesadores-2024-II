@@ -1,6 +1,31 @@
 ## Sumador de 1 bit
 
+El objetivo de este laboratorio es que los estudiantes se familiaricen con el entorno de desarrollo Quartus y la herramienta de simulación mediante la descripción del circuito sumador de 1 bit.
 
+
+## Sumador completo.
+
+Se le llama sumador completo a un circuito digital utilizado en aritmética binaria que permite hacer sumas entre dos números binarios y un bit de acarreo, obteniendo como salida, el resultado de l suma y un bit de acarreo de salida. En la siguiente grafica se presenta la tabla de verdad del sumador completo de un bit.
+
+|   A  |   B  |  Ci |   Co  |   So  |
+|------|------|-----|-------|-------|
+|   0  |   0  |  0  | **0** | **0** |
+|   0  |   0  |  1  | **0** | **1** |
+|   0  |   1  |  0  | **0** | **1** |
+|   0  |   1  |  1  | **1** | **0** | 
+|   1  |   0  |  0  | **0** | **1** |
+|   1  |   0  |  1  | **1** | **0** |
+|   1  |   1  |  0  | **1** | **0** |
+|   1  |   1  |  1  | **1** | **1** | 
+
+A partir de la tabla de verdad, mediante mapas de Karnaugh, se obtienen las expresiones para las salidas del sumador de 1 bit, las cuales son:
+
+ \(S_{o} = C_i \oplus (A \oplus B) \)
+
+ \(C_{o} = C_i \cdot (A \oplus B) + A \cdot B\)
+
+
+![programmer100](../figs/Circuito_sumador.png)
 
 
 ## **Tutorial de implementación en la FPGA Cyclone IV**:
@@ -144,3 +169,18 @@ udevadm control --reload-rules
 
 
 * Con lo anterior se podrá interactuar con los tres switches seleccionados para cada una de las entradas del diseño y podrán corroborar el comportamiento del sumador de 1 bit con los leds.
+
+
+![programmer100](../figs/Circuito_sumador.png)
+
+
+|   A  |   B  |  Ci |   Co  |   S1  |
+|------|------|-----|-------|-------|
+|   0  |   0  |  0  | **0** | **0** |
+|   0  |   0  |  1  | **0** | **1** |
+|   0  |   1  |  0  | **0** | **1** |
+|   0  |   1  |  1  | **1** | **0** | 
+|   1  |   0  |  0  | **0** | **1** |
+|   1  |   0  |  1  | **1** | **0** |
+|   1  |   1  |  0  | **1** | **0** |
+|   1  |   1  |  1  | **1** | **1** | 

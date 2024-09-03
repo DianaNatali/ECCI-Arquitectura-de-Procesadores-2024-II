@@ -173,17 +173,3 @@ udevadm control --reload-rules
 * Con lo anterior se podrá interactuar con los tres switches seleccionados para cada una de las entradas del diseño y podrán corroborar el comportamiento del sumador de 1 bit con los leds.
 
 
-![programmer100](../figs/Circuito_sumador.png)
-
-
-|   A  |   B  |  Ci |   Co  |   S1  |
-|------|------|-----|-------|-------|
-|   0  |   0  |  0  | **0** | **0** |
-|   0  |   0  |  1  | **0** | **1** |
-|   0  |   1  |  0  | **0** | **1** |
-|   0  |   1  |  1  | **1** | **0** | 
-|   1  |   0  |  0  | **0** | **1** |
-|   1  |   0  |  1  | **1** | **0** |
-|   1  |   1  |  0  | **1** | **0** |
-|   1  |   1  |  1  | **1** | **1** | 
-

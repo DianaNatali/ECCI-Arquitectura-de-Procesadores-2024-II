@@ -5,7 +5,7 @@ El objetivo de este laboratorio es que los estudiantes se familiaricen con el en
 
 ## Sumador completo.
 
-Se le llama sumador completo a un circuito digital utilizado en aritmética binaria que permite hacer sumas entre dos números binarios y un bit de acarreo, obteniendo como salida, el resultado de l suma y un bit de acarreo de salida. En la siguiente grafica se presenta la tabla de verdad del sumador completo de un bit.
+Se le llama sumador completo a un circuito digital utilizado en aritmética binaria que permite hacer sumas entre dos números binarios y un bit de acarreo, obteniendo como salida, el resultado de la suma y un bit de acarreo de salida. A continuación se presenta la tabla de verdad del sumador completo de un bit.
 
 |   A  |   B  |  Ci |   Co  |   So  |
 |------|------|-----|-------|-------|
@@ -18,15 +18,19 @@ Se le llama sumador completo a un circuito digital utilizado en aritmética bina
 |   1  |   1  |  0  | **1** | **0** |
 |   1  |   1  |  1  | **1** | **1** | 
 
-A partir de la tabla de verdad, mediante mapas de Karnaugh, se obtienen las expresiones para las salidas del sumador de 1 bit, las cuales son:
+A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las expresiones para las salidas del sumador de 1 bit, las cuales son:
 
  \(S_{o} = C_i \oplus (A \oplus B) \)
 
  \(C_{o} = C_i \cdot (A \oplus B) + A \cdot B\)
 
+Estas expresiones se ven implementadas en el siguiente circuito:
 
 ![programmer100](../figs/Circuito_sumador.png)
 
+Ahora tenemos que dadas las especificaciones del sumador completo de 1 bit, se puede  obtener el diagrama de bloque como sigue:
+
+![Bloque_sum1](../figs/1bit.png)
 
 ## **Tutorial de implementación en la FPGA Cyclone IV**:
 

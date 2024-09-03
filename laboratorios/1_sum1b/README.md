@@ -28,7 +28,7 @@ Estas expresiones se ven implementadas en el siguiente circuito:
 
 Ahora tenemos que dadas las especificaciones del sumador completo de 1 bit, se puede  obtener el diagrama de bloque como sigue:
 
-![Bloque_sum1](../figs/1bit.png){width=40%}
+ <img src="../figs/1bit.png" alt="alt text" width=150 >
 
 ## **Tutorial de implementación en la FPGA Cyclone IV**:
 

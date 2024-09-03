@@ -20,9 +20,7 @@ Se le llama sumador completo a un circuito digital utilizado en aritmética bina
 
 A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las expresiones para las salidas del sumador de 1 bit, las cuales son:
 
- \(S_{o} = C_i \oplus (A \oplus B) \)
-
- \(C_{o} = C_i \cdot (A \oplus B) + A \cdot B\)
+![karnaugh](../figs/karnaugh.png)
 
 Estas expresiones se ven implementadas en el siguiente circuito:
 
@@ -188,3 +186,4 @@ udevadm control --reload-rules
 |   1  |   0  |  1  | **1** | **0** |
 |   1  |   1  |  0  | **1** | **0** |
 |   1  |   1  |  1  | **1** | **1** | 
+

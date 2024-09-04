@@ -14,6 +14,8 @@ El sumador de 1 bit toma tres entradas: los dos bits que se desean sumar (```A``
 
 A continuación se presenta la tabla de verdad del sumador completo de 1 bit.
 
+<p align="center">
+
 |   A  |   B  |  Ci |   Co  |   So  |
 |------|------|-----|-------|-------|
 |   0  |   0  |  0  | **0** | **0** |
@@ -24,6 +26,8 @@ A continuación se presenta la tabla de verdad del sumador completo de 1 bit.
 |   1  |   0  |  1  | **1** | **0** |
 |   1  |   1  |  0  | **1** | **0** |
 |   1  |   1  |  1  | **1** | **1** | 
+
+</p>
 
 A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las expresiones que definen el sumador de 1 bit, las cuales son:
 

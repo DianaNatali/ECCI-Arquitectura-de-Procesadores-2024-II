@@ -30,12 +30,15 @@ A continuación se presenta la tabla de verdad del sumador completo de 1 bit.
 
 A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las expresiones que definen el sumador de 1 bit, las cuales son:
 
-![karnaugh](../figs/karnaugh.png)
+<p align="center">
+<img src="../figs/karnaugh.png" alt="alt text" width=500 >
+</p>
+
 
 Empleando estas expresiones es posible construir el circuito del sumador de 1 bit como se muestra:
 
 <p align="center">
-<img src="../figs/Circuito_sumador.png" alt="alt text" width=500 >
+<img src="../figs/Circuito_sumador.png" alt="alt text" width=600 >
 </p>
 
 A continuación encontrarán una simulación interactiva de esta implementación, en donde se pueden probar todas las posibles combinaciones de las entradas ```A```, ```B``` y ```Ci```:

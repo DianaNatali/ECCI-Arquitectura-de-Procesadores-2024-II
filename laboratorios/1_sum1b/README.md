@@ -109,4 +109,4 @@ Ahora bien, la implementación de cualquier diseño digital empleando primitivas
 
 ## Referencias
 
-**[1]** Beltrán, F., Repositorio de Github ECCI-ARQUITECTURA DE PROCESADORES 2024-2 [Online:] https://github.com/ELINGAP-7545/page.
+**[1]**  Beltrán, F., Repositorio de Github ECCI-ARQUITECTURA DE PROCESADORES 2024-2 [Online:] https://github.com/ELINGAP-7545/page.

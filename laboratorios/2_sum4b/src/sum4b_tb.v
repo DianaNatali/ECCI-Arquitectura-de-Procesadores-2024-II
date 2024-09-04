@@ -6,15 +6,15 @@ module sum4b_tb();
     reg [3:0] A_tb;
     reg [3:0] B_tb;
   
-    wire Cout_tb;
-    wire [3:0] Sum_tb;
+    wire Co_tb;
+    wire [3:0] So_tb;
   
     // Instantiate the Unit Under Test (UUT)
     sum4b uut (
       .A(A_tb), 
       .B( B_tb), 
-      .Cout(Cout_tb), 
-      .Sum(Sum_tb)
+      .Co(Co_tb), 
+      .So(So_tb)
     );
   
   initial begin
@@ -23,7 +23,7 @@ module sum4b_tb();
       if ( B_tb==0) begin
         A_tb=A_tb+1;
       end
-      #5 $display("el valor de %d + %d = %d", A_tb, B_tb,Sum_tb);
+      #5 $display("el valor de %d + %d = %d", A_tb, B_tb,So_tb);
     end
     $finish;
   end      

@@ -1,11 +1,18 @@
 ## Sumador de 1 bit
 
-El objetivo de este laboratorio es que los estudiantes se familiaricen con el entorno de desarrollo Quartus y la herramienta de simulación mediante la descripción del circuito sumador de 1 bit.
+En diseño digital, un sumador de 1 bit es un circuito combinacional que realiza la suma de dos bits junto con un bit de acarreo de entrada. Es uno de los bloques fundamentales en la construcción de sumadores de mayor tamaño, que son esenciales en operaciones aritméticas dentro de procesadores y sistemas digitales. También se conoce como sumador completo.
+
+El sumador de 1 bit toma tres entradas: los dos bits que se desean sumar (```A``` y ```B```) y un bit de acarreo de entrada (```Ci```) que puede provenir de una posición menos significativa en un sumador más grande. El circuito produce dos salidas: el bit de suma (```So```) y el bit de acarreo de salida (```Co```). A continuación se muestra su respectivo bloque funcional:
 
 
-## Sumador completo.
 
-Se le llama sumador completo a un circuito digital utilizado en aritmética binaria que permite hacer sumas entre dos números binarios y un bit de acarreo, obteniendo como salida, el resultado de la suma y un bit de acarreo de salida. A continuación se presenta la tabla de verdad del sumador completo de un bit.
+<p align="center">
+ <img src="../figs/1bit.png" alt="alt text" width=300 >
+</p>
+
+
+
+A continuación se presenta la tabla de verdad del sumador completo de 1 bit.
 
 |   A  |   B  |  Ci |   Co  |   So  |
 |------|------|-----|-------|-------|
@@ -18,159 +25,84 @@ Se le llama sumador completo a un circuito digital utilizado en aritmética bina
 |   1  |   1  |  0  | **1** | **0** |
 |   1  |   1  |  1  | **1** | **1** | 
 
-A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las expresiones para las salidas del sumador de 1 bit, las cuales son:
+A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las expresiones que definen el sumador de 1 bit, las cuales son:
 
 ![karnaugh](../figs/karnaugh.png)
 
-Estas expresiones se ven implementadas en el siguiente circuito:
+Empleando estas expresiones es posible construir el circuito del sumador de 1 bit como se muestra:
 
 ![programmer100](../figs/Circuito_sumador.png)
 
-Ahora tenemos que dadas las especificaciones del sumador completo de 1 bit, se puede  obtener el diagrama de bloque como sigue:
+A continuación encontrarán una simulación interactiva de esta implementación, en donde se pueden probar todas las posibles combinaciones de las entradas ```A```, ```B``` y ```Ci```:
 
+[Ver el sumador completo](https://circuitverse.org/users/11037/projects/semisumador-db10348a-6e96-4bc4-befd-460fa56747ca).
 
- <img src="../figs/1bit.png" alt="alt text" width=450 >
+### Implementación en HDL
 
-## **Tutorial de implementación en la FPGA Cyclone IV**:
 
-***Partes y conexiones***
+#### Lógica combinacional:
 
-![fpga](../figs/FPGA.png)
+Es impotante recordar que la lógica combinacional es un tipo de circuito lógico donde las salidas en cualquier instante de tiempo dependen únicamente de las combinaciones actuales de las entradas, sin depender de estados anteriores o memorias internas.
 
+#### 1. Implementación estructural (empleando primitivas):
 
-### **Configuración del programador (USB-blaster) de la FPGA**:
+En el archivo [sum1b_primitive.v](./src/sum1b_primitive.v) encontrarán la representación explícita del funcionamiento de un sumador de 1 bit utilizando puertas lógicas primitivas, como se explicó anteriormente, que es ideal para entender cómo se construyen operaciones aritméticas básicas a nivel de *hardware*.
 
-### **1. Linux**:
-----------------------------------------------------------------
+En el contexto de Verilog y diseño digital, las primitivas se refieren a las puertas lógicas básicas y otros elementos fundamentales que se utilizan para construir circuitos lógicos. Estas primitivas son bloques de construcción básicos que se pueden utilizar para diseñar circuitos más complejos. Verilog incluye primitivas predefinidas que permiten describir el comportamiento del *hardware* de manera simple y directa.
 
+  * **Características de las primitivas:**
 
-***udev - Gestor Dinámico de Dispositivos Linux***: 
+    * **Básicas:** Son los bloques de construcción más elementales en el diseño de circuitos lógicos.
 
-```udev``` es un sistema de espacio de usuario (se refiere a un espacio de aplicación, parcialmente en Unix o en sistemas operativos tipo Unix, el cual es externo al núcleo) que permite al administrador del sistema operativo registrar controladores de espacio de usuario para eventos. Estos eventos son generados principalmente por el kernel de Linux en respuesta a eventos físicos relacionados con dispositivos periféricos, en este caso el USB-blaster de la FPGA, permitiendo identificar dispositivos de forma dinámica en función de sus propiedades, como la ID del proveedor y la ID del dispositivo.
+    * **Predefinidas:** En Verilog, estas primitivas están predefinidas y listas para ser utilizadas sin necesidad de definirlas manualmente.
 
-### **Cómo crear una regla ```udev``` para el USB-blaster de la FPGA**:
+    * **Directas:** Facilitan la implementación de funciones lógicas simples, como sumar bits, realizar operaciones de control, etc.
+  
+    * **Eficientes:** Su uso es eficiente en términos de síntesis, ya que se mapean directamente a los recursos de *hardware* básicos.
 
- * Existe una carpeta de reglas ```udev ``` en el directorio ```root```, para acceder a este se debe:
+ En la descripción HDL [sum1b_primitive.v](./src/sum1b_primitive.v), la lógica combinacional se emplea para calcular la suma (```So```) y el acarreo de salida (```Co```) a partir de las entradas (```A```, ```B```, y ```Ci```), empleando operaciones lógicas básicas como ```AND```, ```OR``` y ```XOR```.
 
-```
-cd /
-cd etc/udev/rules.d/
-```
+#### 2. Implementación comportamental:
 
- * Una vez en este directorio, con el comando ```sudo``` (porque estamos en un directorio ```root```) se debe crear un archivo con el nombre **51-usbblaster.rules** así:
+El módulo [sum1b.v](./src/sum1b.v) implementa un sumador de 1 bit utilizando un enfoque diferente al del módulo [sum1b_primitive.v](./src/sum1b_primitive.v). En esta implementación, se emplean registros y asignaciones en un bloque ```always``` para calcular la suma y el acarreo.
 
-```
-sudo touch 51-usbblaster.rules
-```
+* Registros y asignaciones:
 
-Con el comando anterior se creó un arhivo ```.rules``` vacío.
+    * ```reg [1:0] result;```: Se utiliza un registro de 2 bits para almacenar el resultado de la operación de suma y el acarreo. Este registro tiene dos bits: el primero para la suma (```result[0]```) y el segundo para el acarreo (```result[1]```).
 
-* Ahora se deben agregar las siguientes líneas dentro de ese archivo, para lo cual se puede hacer de dos formas:
+* Cálculo de resultados:
 
-  - Abrir en el directorio ```rules.d``` el editor de texto de preferencia, por ejemplo para VSC el comando ```code .``` abrirá el editor en dicha ubicación, en donde verá en la barra EXPLORER el archivo ```.rules``` creado junto a otros archivos y podrá editarlo agregando las siguientes líneas, pero, cuando lo intente guardar, VSC le solictará permiso para hacerlo como super usuario (sudo).
+    * ```always @(*)```: Este bloque ```always``` se ejecuta cada vez que cambian las entradas (```A```, ```B```, o ```Ci```). Dentro de este bloque, se realiza la operación de suma ```A + B + Ci```, que se almacena en el registro ```result```.
 
-  - Con el comando ```sudo nano 51-usbblaster.rules``` abrirá el archivo creado anteriormente en la terminal y podrá agregar las siguientes lineas.
+      El bloque ```always @(*)``` es igual a ```always @ (A or B or Ci)```, y representa que lo que se defina en el interior, en este caso el cálculo de ```result```, es inmediato y basado únicamente en las entradas actuales, es decir, la operación se ejecuta cada vez que haya un cambio en alguna de las entradas.
 
-```
-# Intel FPGA Download Cable
+    * ```result = A + B + Ci;```: La suma de ```A```, ```B```, y ```Ci``` se calcula y se almacena en ```result```. Dado que result es un registro de 2 bits, puede almacenar tanto la suma como el acarreo de salida.
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
+* Asignaciones de salidas:
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6002", MODE="0666"
+    * ```assign So = result[0];```: Se asigna el bit de suma (```result[0]```) a la salida ```So```.
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6003", MODE="0666"
+    * ```assign Cout = result[1];```: Se asigna el bit de acarreo (```result[1]```) a la salida ```Co```.
 
-# Intel FPGA Download Cable II
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6010", MODE="0666"
 
-SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6810", MODE="0666"
+### Comparación:
 
-```
+La implementación del [sum1b.v](./src/sum1b.v) es una implementación basada en comportamiento o implementación de alto nivel, en donde se utiliza un enfoque más abstracto para describir el comportamiento del circuito en lugar de utilizar puertas lógicas primitivas. Este tipo de implementación se enfoca en especificar qué se debe hacer, más que en cómo se hace a nivel de *hardware*. Este enfoque simplifica la descripción del comportamiento del sumador al evitar el detalle de las puertas lógicas primitivas, facilitando así la comprensión y la mantenibilidad del código.
 
-* Una vez creadas las reglas para el USB-blaster de la FPGA el siguiente comando actualizará dichas reglas en el sistema:
+Ahora bien, la implementación de cualquier diseño digital empleando primitivas tiene la ventaja de facilitar la **optimización de recursos** y, por ende, la **eficiencia** **en** **el** *hardware*, ya que las herramientas de síntesis pueden optimizar el uso de recursos físicos del hardware (como LUTs y *Gates*) cuando se emplean primitivas, lo que puede llevar a una implementación más eficiente.
 
-```
-udevadm control --reload-rules
-```
 
-* Poterior a esto se debe hacer un *reboot* del computator.
+## Entregables
 
+1. Comprenda cada línea del código HDL de cada archivo que se encuentra en la carpera [src](./src) y comente si es necesario en su respectivo archivo ```README.md```.
 
-### **2. Windows**:
-----------------------------------------------------------------
+2. Realice la respectiva simulación de las dos descripción HDL ([sum1b_primitive.v](./src/sum1b_primitive.v) y [sum1b.v](./src/sum1b.v)) y muestre evidencias en su respectivo archivo ```README.md```, corroborando que se cumple la tabla de verdad descrita anteriormente. Para ello puede emplear el *testbench* adjunto ([testbench](./src/sum1b_tb.v)) o, empleando el simulador que haya configurado por defecto en la instalación de ```IDE Quartus```, puede forzar los valores de las entradas en un instante de tiempo determinado.
 
-1. Se debe conectar el USB-Blaster al computador.
+3. Cargue la descripción HDL en la tarjeta de desarrollo, empleando la ```IDE Quartus``` y muestre en el laboratorio el funcionamiento del sumador de 1 bit, empleando interruptores como las entradas y LEDs como las salidas. 
 
-2. Abrir el ```Device Manager```.
+4. Para que visualice lo expuesto en la sección **Comparación**, en la ```IDE Quartus```, luego de *sintetizar* cada una de las descripciones HDL, vaya al menú ```Tools```, seleccione la opción ```Netlist viewer``` y luego la opción ```RTL viewer```. Compare ambos diagramas y muestre las respectivas evidencias en el archivo ```README.md```.
 
-3. Bajo **Other devices** &rarr; **Unknown device** se encontrará el USB-blaster.
+## Referencias
 
-4. Click derecho sobre este dispositivo y seleccionar **Update driver**.
-
-![blaster_windows](../figs/blaster_windows1.png)
-
-5. Seleccionar **Browse my computer for driver software**.
-
-6. Buscar el driver en ```Path de la instalación de Quartus\quartus\drivers\usb-blaster-ii```.
-
-7. Click en **Next**.
-
-8. Seleccionar **Install** en la ventana **Would you like to install this device software?**
-
-9. Al finalizar deberá aparecer una ventana confirmando la instalación exitosa del driver.
-
-10. Finalmente, en el ```Device Manager``` ya no aparecerá el USB-blaster como un dispositivo desconocido (**Unknown device**).
-
-![blaster_windows2](../figs/blaster_windows2.png)
-
-
-(Tutorial para Windows tomado de [link](https://www.terasic.com.tw/wiki/Intel_USB_Blaster_II_Driver_Installation_Instructions))
-
-### **Implementación del sumador de 1 bit**:
-----------------------------------------------------------------
-
-* Abrir el proyecto previamente creado para el sumador de 1 bit en *Quartus*.
-
-* En la sección ```Project Navigator``` &rarr; ```Hierarchy``` hacer click derecho sobre el nombre del dispositivo como se muestra en la imagen y seleccionar la opción **Device**.
-
-![device_sel](../figs/device_sel.png)
-
-* Se abrirá la ventana ```Device``` en donde se debe seleccionar en **Family** la opción **Cyclone IV E** y en  **Available devices** seleccionar la referencia **EP4CE6E22C8** como se muestra en la imagen.
-
-![device_sel2](../figs/device_sel2.png)
-
-* Luego, en la sección ```Task``` se debe hacer click a la opción **Compile Design**.
-
-* Posteriormente, en la barra **Standard** (que está debajo de la barra de menús), deben seleccionar el icono de **Pin Planer** que abrirá dicha ventana, donde se encontrará el pinout de la FPGA, como se muestra en las siguiente imagenes:
-
-![pin_planer](../figs/pin_planner.png)
-
-
-![pin_planer](../figs/pin_planner2.png)
-
-
-  - En la parte inferior de la ventana ```Pin Planer``` se puede observar una tabla con las entradas y salidas del diseño del sumador de 1 bit en la columna **Node name**.
-
-  - En la columna **Location** se podrá seleccionar los pines de la FPGA asociados a ciertos elementos, en este caso, se van a usar switches para las entradas y leds para las salidas, dicha numeración se podrá observar directamente en la FPGA.
-
-  - Posteriormente se debe dar doble click a la opción **Run I/O Assignment Analysis** que se encuentra en la sección ```Task```, en la parte izquierda de la ventana ```Pin Planer```.
-
-* En la ventana principal de *Quartus*, se debe dar doble click en la opción **Program Device (Open Programmer)** que aparece en la sección ```Task```, que abrirá la ventana  ```Programmer``` como se muestra en la imagen.
-
-![programmer](../figs/programmer.png)
-
-
-* En la ventana  ```Programmer``` deben darle click al botón ```Hardware Setup``` que abrirá usa sub ventana en donde deben seleccionar el USB-blaster de la FPGA como se muestra en la imagen.
-
-![hw_setup](../figs/hardware_setup.png)
-
-
-* Finalmente, en la ventana  ```Programmer``` deben darle click al botón ```Start``` que iniciará la programación de la FPGA, la cual pueden  observar en la barra de progreso (***No desconectar ni mover las conexiones a la FPGA mientras no vean la barra de progreso completada***) como se ve en la siguiente imagen.
-
-![programmer100](../figs/programmer_100.png)
-
-
-* Con lo anterior se podrá interactuar con los tres switches seleccionados para cada una de las entradas del diseño y podrán corroborar el comportamiento del sumador de 1 bit con los leds.
-
-
+**[1]** Beltrán, F., Repositorio de Github ECCI-ARQUITECTURA DE PROCESADORES 2024-2 [Online:] https://github.com/ELINGAP-7545/page.

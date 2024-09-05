@@ -47,3 +47,8 @@ donde:
 
 3. Cargue la descripción HDL en la tarjeta de desarrollo, empleando la ```IDE Quartus``` y muestre en el laboratorio el funcionamiento del sumador de 4 bits, empleando interruptores como las entradas y LEDs como las salidas. 
 
+
+## Referencias
+
+**[1]**  Beltrán, F., Repositorio de Github ECCI-ARQUITECTURA DE PROCESADORES 2024-2 [Online:] https://github.com/ELINGAP-7545/page.
+

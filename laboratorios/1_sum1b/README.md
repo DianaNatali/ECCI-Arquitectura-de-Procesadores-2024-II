@@ -35,8 +35,6 @@ A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las 
 </p>
 
 
-![programmer100](../figs/Sumador.png)
-
 <p align="center">
 <img src="../figs/Circuito_sumador.png" alt="alt text" width=600 >
 </p>

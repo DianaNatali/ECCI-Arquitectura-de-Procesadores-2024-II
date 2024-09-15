@@ -27,22 +27,19 @@ module mult_tb();
         clk = 1'b0;
         MR = 3'b0;
         MD = 3'b0;
-	    #10 init = 0;
-	    for (MR = 0; MR < 8; MR = MR + 1) begin
-	        if(MR==0)begin
-	    		 MD=MD+1;
-	    	end
-        	#2; init = 1;
-   	        #2; init = 0;
-	    	#20 
-	    	#5 $display("%d * %d = %d", MD, MR, pp);
-        end
-        $finish;
+		init = 0;
+	    #10; 
+		init = 0;
+		MD = 101;
+		MR = 111;
+		#10;
+		init = 1;
 	end
 
     initial begin: TEST_CASE
 		$dumpfile("mult_tb.vcd");
 		$dumpvars(-1, uut);
+		#100 $finish;
 	end
 	
 	

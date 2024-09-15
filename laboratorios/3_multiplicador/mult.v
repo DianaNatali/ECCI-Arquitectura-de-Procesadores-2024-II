@@ -64,7 +64,7 @@ module multiplicador(
 	        	rst <= 1'b0;
 	        	sh <= 1'b0;
 	        	add <= 1'b0;
-	        	status <= START;
+	        	status <= END1;
 	        end
 	        default: status <= START;
 	    endcase 

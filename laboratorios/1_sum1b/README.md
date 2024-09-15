@@ -24,12 +24,13 @@ A partir de la tabla de verdad, mediante **mapas de Karnaugh**, se obtienen las 
 
 Estas expresiones se ven implementadas en el siguiente circuito:
 
-![programmer100](../figs/Circuito_sumador.png)
+![programmer100](../figs/Sumador.png)
 
 Ahora tenemos que dadas las especificaciones del sumador completo de 1 bit, se puede  obtener el diagrama de bloque como sigue:
 
-
- <img src="../figs/1bit.png" alt="alt text" width=450 >
+<p align="center">
+ <img src="../figs/1bit.png" alt="alt text" width=400 >
+</p>
 
 ## **Tutorial de implementación en la FPGA Cyclone IV**:
 

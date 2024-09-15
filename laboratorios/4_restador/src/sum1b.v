@@ -1,21 +1,18 @@
-module sum1b(A, B, Ci, S, Co);
+module sum1b(
+    input A, 
+    input B, 
+    input Ci,
+    output wire Co,
+    output wire So
+);
 
-input A;
-input B;
-input Ci;
+reg [1:0] result;
 
-output S;
-output Co;
+assign So = result[0];
+assign Co = result[1];
 
-wire xor1;
-wire and1;
-wire and2;
-
-assign xor1 = A ^ B;
-assign and1 = xor1 & Ci;
-assign and2 = A & B;
-assign S = xor1 ^ Ci;
-assign Co = and1 | and2;
-
+always@(*) begin
+  result = A+B+Ci;
+end
 
 endmodule

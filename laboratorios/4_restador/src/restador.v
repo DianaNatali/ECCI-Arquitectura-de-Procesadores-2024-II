@@ -4,15 +4,13 @@ module restador (
     input  [3:0] A,
     input  [3:0] B,
     input  sel,
-    output reg [3:0] So,
-    output Co
+    output wire [3:0] So,
+    output wire Co
 );
 
 
-wire b0;
-wire b1;
-wire b2;
-wire b3;
+wire b0, b1, b2, b3;
+
 wire [3:0] wS;
 
 assign b0 = B[0] ^ sel;
@@ -20,20 +18,9 @@ assign b1 = B[1] ^ sel;
 assign b2 = B[2] ^ sel;
 assign b3 = B[3] ^ sel;
 
-sum4b sumres(.A(A), .B({b3,b2,b1,b0}), .Ci(sel), .S(wS), .Co(Co));
-    
-assign s0 = wS[0] ^ ~Co;
-assign s1 = wS[1] ^ ~Co;
-assign s2 = wS[2] ^ ~Co;
-assign s3 = wS[3] ^ ~Co;
+sum4b sumres(.A(A), .B({b3,b2,b1,b0}), .Ci(sel), .So(wS), .Co(Co));
 
-always @(*) begin
-    case (Co)
-        1'b0: So = {s3,s2,s1,s0} + 1'b1;
-        1'b1: So = {s3,s2,s1,s0};
-        default: So = 0;
-    endcase
-end
+assign So = (Co)? wS : ~wS + 1'b1;
 
  
 endmodule

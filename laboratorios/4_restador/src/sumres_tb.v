@@ -5,19 +5,19 @@ module sumres_tb();
 
 reg [3:0] A_tb;
 reg [3:0] B_tb;
-//reg sel_tb;
+reg sel_tb;
 
 
 restador uut(
     .A(A_tb),
-    .B(B_tb)
-    //.sel(sel_tb)
+    .B(B_tb),
+    .sel(sel_tb)
 );
 
 initial begin
 A_tb = 4'b1000;
 B_tb = 4'b0010;
-//sel_tb = 1;
+sel_tb = 1;
 #1;
 A_tb = 4'b0010;
 B_tb = 4'b0001;

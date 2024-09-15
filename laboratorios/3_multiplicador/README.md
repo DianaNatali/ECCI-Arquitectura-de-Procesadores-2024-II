@@ -4,7 +4,7 @@
 La descripción HDL que encontrarán implementa un multiplicador secuencial de 3 bits utilizando una máquina de estados finita (FSM) para controlar el proceso de multiplicación basado en el algoritmo de productor parciales. En la siguiente figura se muestra el bloque funcional del multiplicador.
 
  <p align="center">
- <img src="../figs/bloques_mul.jpeg" alt="alt text" width=400 >
+ <img src="../figs/bloques_mul.png" alt="alt text" width=390 >
 </p>
 
 

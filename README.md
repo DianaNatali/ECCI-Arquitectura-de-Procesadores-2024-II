@@ -19,6 +19,8 @@ Este laboratorio está diseñado para brindar los conocimientos y habilidades ne
 
 3. [Multiplicador](./laboratorios/3_multiplicador/README.md).
 
+4. [Restador](./laboratorios/4_restador/README.md).
+
 
 ## Referencias
 

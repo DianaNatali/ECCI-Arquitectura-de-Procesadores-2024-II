@@ -17,7 +17,11 @@ module multiplicador(
     reg [2:0] status;
 
     // Estados de la FSM 
-    parameter START = 0, CHECK = 1, ADD = 2, SHIFT = 3, END1 = 4;
+    localparam START = 0;
+	localparam CHECK = 1; 
+	localparam ADD = 2; 
+	localparam SHIFT = 3; 
+	localparam END1 = 4;
 
     initial begin
         status = START;

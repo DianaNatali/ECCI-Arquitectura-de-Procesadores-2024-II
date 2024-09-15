@@ -25,7 +25,7 @@ El resultado final, $0011_2$​, es el complemento a 2 de $1101_2$​, que repre
 El circuito presentado a continuación tiene la capacidad de realizar restas y sumas utilizando una técnica de complemento a 2. 
 
 <p align="center">
- <img src="../figs/Restador.png" alt="alt text" width=400 >
+ <img src="../figs/Restador.png" alt="alt text" width=600 >
 </p>
 
 Para realizar la operación de resta, el circuito presenta el siguiente funcionamiento: 

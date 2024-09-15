@@ -1,15 +1,13 @@
 `include "sum4b.v"
 
 module restador (
-input  [3:0] A,
-input  [3:0] B,
-input  sel,
-output reg [3:0] S,
-output Co
+    input  [3:0] A,
+    input  [3:0] B,
+    input  sel,
+    output reg [3:0] So,
+    output Co
 );
 
-
-parameter sel = 1'b1;
 
 wire b0;
 wire b1;
@@ -31,9 +29,9 @@ assign s3 = wS[3] ^ ~Co;
 
 always @(*) begin
     case (Co)
-        1'b0: S = {s3,s2,s1,s0} + 1'b1;
-        1'b1: S = {s3,s2,s1,s0};
-        default: S = 0;
+        1'b0: So = {s3,s2,s1,s0} + 1'b1;
+        1'b1: So = {s3,s2,s1,s0};
+        default: So = 0;
     endcase
 end
 

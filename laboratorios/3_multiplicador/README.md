@@ -39,7 +39,7 @@ La lógica secuencial en el multiplicador se evidencia por el uso de registros y
 
 2. Realice la respectiva simulación de la descripción HDL del multiplicador de 3 bits y muestre evidencias en su respectivo archivo ```README.md```. Para ello puede emplear el *testbench* adjunto ([testbench](./src/sum4b_tb.v)) o, empleando el simulador que haya configurado por defecto en la instalación de ```IDE Quartus```, puede forzar los valores de las entradas en un instante de tiempo determinado.
 
-3. Cargue la descripción HDL en la tarjeta de desarrollo, empleando la ```IDE Quartus``` y muestre en el laboratorio el funcionamiento del sumador de 4 bits, empleando interruptores como las entradas y LEDs como las salidas. 
+3. Cargue la descripción HDL en la tarjeta de desarrollo, empleando la ```IDE Quartus``` y muestre en el laboratorio el funcionamiento del multiplicador, empleando interruptores como las entradas y LEDs como las salidas. 
 
 
 <!-- 

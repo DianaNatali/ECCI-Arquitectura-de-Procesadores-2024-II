@@ -82,7 +82,7 @@ El módulo [sum1b.v](./src/sum1b.v) implementa un sumador de 1 bit utilizando un
 
       El bloque ```always @(*)``` es igual a ```always @ (A or B or Ci)```, y representa que lo que se defina en el interior, en este caso el cálculo de ```result```, es inmediato y basado únicamente en las entradas actuales, es decir, la operación se ejecuta cada vez que haya un cambio en alguna de las entradas.
 
-    * ```result = A + B + Ci;```: La suma de ```A```, ```B```, y ```Ci``` se calcula y se almacena en ```result```. Dado que result es un registro de 2 bits, puede almacenar tanto la suma como el acarreo de salida.
+    * ```result = A + B + Ci;```: La suma de ```A```, ```B```, y ```Ci``` se calcula y se almacena en ```result```. Dado que ```result``` es un registro de 2 bits, puede almacenar tanto la suma como el acarreo de salida.
 
 * Asignaciones de salidas:
 

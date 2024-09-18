@@ -38,3 +38,9 @@ Para realizar la operación de resta, el circuito presenta el siguiente comporta
 
 Cuando la entrada ```Sel = 0``` la salida de las compuertas ```XOR``` es simplemente la misma entrada ```B```, por lo tanto se ejecuta la operación de suma $A+B$.
 
+### Representación de números negativos
+
+Si el resultado de la resta es menor que 0, es necesario realizar complemento a 2 a este resultado para poderlo representar adecuadamente. 
+
+Cuando ```Co``` es 0, esto representa que el resultado de la operación es negativo. 
+

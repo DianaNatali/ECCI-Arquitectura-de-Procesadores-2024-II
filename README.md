@@ -21,7 +21,7 @@ Este laboratorio está diseñado para brindar los conocimientos y habilidades ne
 
 4. [Restador](./laboratorios/4_restador/README.md).
 
-5. [BCD a 7 segmentos](./laboratorios/5_BCDtoSseg/README.md).
+5. [BCD a 7 segmentos](./laboratorios/5_BCD2Sseg/README.md).
 
 6. [ALU](./laboratorios/6_ALU/README.md).
 

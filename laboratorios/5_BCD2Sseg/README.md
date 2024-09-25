@@ -58,7 +58,7 @@ En las siguientes figuras se muestra cómo se distribuyen los 7 segmentos en el 
 
 
 <p align="center">
- <img src="https://exploreembedded.com/wiki/images/1/1a/0SevenSegment.gif" alt="alt text" width=200 >
+ <img src="https://exploreembedded.com/wiki/images/1/1a/0SevenSegment.gif" alt="alt text" width=400 >
 </p>
 
 
